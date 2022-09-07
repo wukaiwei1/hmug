@@ -24,14 +24,15 @@
         <!-- 内容部分 -->
         <view class="floor-img-box">
           <!-- 左侧大图片的盒子 -->
-          <view class="left-img-box">
+          <view class="left-img-box" @click="goodList(item.product_list[0].navigator_url)">
             <image class="left-img" :src="item.product_list[0].image_src"
               :style="{width:item.product_list[0].image_width+'rpx'}">
             </image>
           </view>
           <!-- 右侧 4 个小图片的盒子 -->
           <view class="right-img-box">
-            <view class="right-img-item" v-for="(item2,i) in item.product_list" :key="i" v-if="i !== 0">
+            <view class="right-img-item" v-for="(item2,i) in item.product_list" :key="i" v-if="i !== 0"
+              @click="goodList(item2.navigator_url)">
               <image class="image" :style="{width:item2.image_width+'rpx'}" :src="item2.image_src">
               </image>
             </view>
@@ -85,6 +86,12 @@
             url: "/pages/cate/cate"
           })
         }
+      },
+      // 点击图片
+      goodList(url) {
+        uni.navigateTo({
+          url: '/subPackages/goods_list/goods_list' + url.slice(url.indexOf("?"))
+        })
       }
     },
     // 页面加载钩子函数

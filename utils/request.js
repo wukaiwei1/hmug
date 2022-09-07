@@ -5,12 +5,14 @@ var fly = new Fly()
 // 基准地址
 fly.config.baseURL = "https://api-hmugo-web.itheima.net/api/public/v1"
 // 超时时间
-fly.config.timeout = 30000
+fly.config.timeout = 3000
 
 //添加请求拦截器
 fly.interceptors.request.use((request) => {
   //给所有请求添加自定义header
   request.headers["X-Tag"] = "flyio";
+
+  toast.loading('正在加载中...')
   //打印出请求体
   // console.log(request.body)
   //终止请求
@@ -25,13 +27,16 @@ fly.interceptors.request.use((request) => {
 //添加响应拦截器，响应拦截器会在then/catch处理之前执行
 fly.interceptors.response.use(
   (response) => {
+    // 关闭提示
+    uni.hideToast()
     //只将请求结果的data字段返回
     return response.data.message
   },
   (err) => {
     //发生网络错误后会走到这里
     toast.err('网络错误')
-    return Promise.resolve("ssss")
+
+    return Promise.resolve("123456")
   }
 )
 

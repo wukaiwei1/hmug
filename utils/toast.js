@@ -23,4 +23,13 @@ toast.success = function(title, duration = 3000) {
     duration
   })
 }
+
+// 成功提示 toast.success('请求成功')
+toast.loading = function(title, duration = 3000) {
+  uni.showToast({
+    title,
+    icon: "loading",
+    duration
+  })
+}
 export default toast
