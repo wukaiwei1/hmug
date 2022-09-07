@@ -12,7 +12,6 @@
         "navigationBarTitleText": "购物车",
         "enablePullDownRefresh": false
       }
-
     },
     {
       "path": "pages/cate/cate",
@@ -31,6 +30,14 @@
 
     }
   ],
+  // 设置分包
+  "subPackages": [{
+    "root": "subPackages",
+    "name": "goods",
+    "pages": [{
+      "path": "goods_detail/goods_detail"
+    }]
+  }],
   "tabBar": {
     "selectedColor": "#C00000",
     "list": [{
